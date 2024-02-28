@@ -1,11 +1,17 @@
 package programa;
 public class Aventura extends Filme{
 
-    private String generoAventura;
-    public String FilmeAventura(int resposta){
-        if(resposta == 2){
-            return generoAventura = "Aventura";
-        }
-        return "";
+    private boolean generoAventura;
+
+
+
+    @Override
+    public void validarLancamento() {
+
+    }
+
+    @Override
+    public void CadastrarFilme() {
+
     }
 }

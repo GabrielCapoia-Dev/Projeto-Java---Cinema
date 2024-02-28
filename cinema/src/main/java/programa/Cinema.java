@@ -5,76 +5,79 @@ import java.util.SortedMap;
 
 public class Cinema {
     public static void main(String[] args) {
+
+        // Obejto para reconhecer o input do usuário
+        Scanner scanner = new Scanner(System.in);
+
+        // Variavel para armazenar o Input
         int resposta;
-        Boolean c = true;
-        do{
-            var scan = new Scanner(System.in);
+       boolean condicao = true;
 
-            System.out.println("Por favor selecione a opção desejada!!");
-            System.out.println("[1] Cadastrar um filme.");
-            System.out.println("[2] Ver lista completa de filmes");
-            System.out.println("[3] Ver por ordem de lançamento");
-            System.out.println("[4] Sair!");
-            resposta = scan.nextInt();
+        while (condicao == true){
 
-            if(resposta == 1){
-                Filme filme = new Filme();
-                Acao acao = new Acao();
-                Aventura aventura = new Aventura();
-                Terror terror = new Terror();
-                boolean i = true;
-                int resp;
-                do{
-                    System.out.println("Escolha a categoria:");
-                    System.out.println("[1] Ação");
-                    System.out.println("[2] Aventura");
-                    System.out.println("[3] Terror");
-                    System.out.println("[4] Sair");
-                    resp = scan.nextInt();
-                    if (resp == 1){
-                        System.out.println("Insira o nome do Filme");
-                        acao.setNomeFilme(scan.next());
+            // Inicio da coleta de dados
+            System.out.println("""
+                |======================================================|
+                |========= Bem-vindo ao Gerenciamento de Filmes =======|
+                |  Insira a Opção desejada!!                           |
+                |      [1] Cadastrar Filme                             |
+                |      [2] Ver Filmes Cadastrados                      |
+                |      [3] Ver Filmes lançamentos (menos de 30 dias)   |
+                |      [4] Sair                                        |
+                |======================================================|
+                |======================================================|               
+                """);
+            resposta = scanner.nextInt();
+           switch (resposta){
+               case 1:
+                   int respostaCadastroFilme;
+                   boolean condicaoCadastroFilme = true;
+                        while (condicaoCadastroFilme == true){
+                            System.out.println("""
+                        |======================================================|
+                        |  Insira o genêro do filme!!                          |
+                        |      [1] Terror                                      |
+                        |      [2] Ação                                        |
+                        |      [3] Aventura                                    |
+                        |      [4] Voltar                                      |
+                        |======================================================|            
+                        """);
+                            respostaCadastroFilme = scanner.nextInt();
+                            switch (respostaCadastroFilme){
+                                case 1:
 
-                        System.out.println("Insira a data de lançamento mm/yyyy");
-                        acao.setDataLancamento(scan.nextLine());
+                                    break;
+                                case 2:
 
-                        acao.FilmeAcao(resp);
-                    } else if (resp == 2) {
-                        System.out.println("Insira o nome do Filme");
-                        aventura.setNomeFilme(scan.nextLine());
-                        System.out.println("Insira a data de lançamento mm/yyyy");
-                        aventura.setDataLancamento(scan.nextLine());
-                        aventura.FilmeAventura(resp);
-                    } else if (resp == 3) {
-                        System.out.println("Insira o nome do Filme");
-                        terror.setNomeFilme(scan.nextLine());
-                        System.out.println("Insira a data de lançamento mm/yyyy");
-                        terror.setDataLancamento(scan.nextLine());
-                        terror.FilmeTerror(resp);
-                    } else{
-                        i = false;
-                    }
-                }while (!i);
+                                    break;
+                                case 3:
 
-            }else if (resposta == 2){
+                                    break;
+                                case 4:
+                                    condicaoCadastroFilme = false;
+                                    break;
+                                default:
+                                    System.out.println("Insira apenas um dos numeros nas opções a cima");
+                            }
+                        }
+                   break;
+               case 2:
+                   System.out.println("Caso 2");
+                   break;
+               case 3:
+                   System.out.println("Caso 3");
+                   break;
 
+               case 4:
+                    condicao = false;
+                   break;
 
-                //Aqui vai o Array puro filtrando apenas por classes
-
-
-
-            } else if (resposta == 3) {
-
-                //Aqui vai o Array testando se é lançamento
+               default:
+                   System.out.println("Insira apenas um dos numeros nas opções a cima");
+           }
 
 
-            }else{
-                c = false;
-            }
-
-
-        }while (!c);
-
-        System.out.println("Fim");
+        }
+        System.out.println("Programa Encerrado...");
     }
 }
